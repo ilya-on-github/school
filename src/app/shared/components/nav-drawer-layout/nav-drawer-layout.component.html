@@ -1,0 +1,54 @@
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer #drawer class="drawer" mode="side" [opened]="true">
+    <div class="drawer-content-container">
+      <header [ngClass]="{'authenticated': isAuthenticated}">
+        <ng-container [ngSwitch]="isAuthenticated">
+          <ng-container *ngSwitchCase="true">
+            <div class="no-picture"></div>
+          </ng-container>
+          <ng-container *ngSwitchCase="false">
+            <button mat-raised-button [routerLink]="['/login']">{{ 'Вход/регистрация' }}</button>
+          </ng-container>
+        </ng-container>
+      </header>
+      <section class="nav-section">
+        <nav>
+          <div class="nav-group">
+            <a mat-flat-button [routerLink]="['/timetable']" routerLinkActive="active">
+              <mat-icon>calendar_today</mat-icon>
+              <span>Расписание</span>
+            </a>
+            <a mat-flat-button [routerLink]="['/courses']" routerLinkActive="active">
+              <mat-icon>category</mat-icon>
+              <span>Курсы</span>
+            </a>
+            <a mat-flat-button [routerLink]="['/spots']" routerLinkActive="active">
+              <mat-icon>map</mat-icon>
+              <span>Площадки</span>
+            </a>
+            <a mat-flat-button [routerLink]="['/team']" routerLinkActive="active">
+              <mat-icon>accessible_forward</mat-icon>
+              <span>Инструкторы</span>
+            </a>
+            <a mat-flat-button [routerLink]="['/school']" routerLinkActive="active">
+              <mat-icon>school</mat-icon>
+              <span>О школе</span>
+            </a>
+          </div>
+          <div class="nav-group">
+            <a mat-flat-button [routerLink]="['/support']" routerLinkActive="active">
+              <mat-icon>help</mat-icon>
+              <span>Помощь и обратная связь</span>
+            </a>
+          </div>
+        </nav>
+      </section>
+      <footer>
+      </footer>
+    </div>
+  </mat-drawer>
+
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</mat-drawer-container>

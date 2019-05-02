@@ -1,0 +1,12 @@
+<app-nav-drawer-layout>
+  <mat-toolbar>
+    {{ 'Курсы' }}
+  </mat-toolbar>
+  <ul>
+    <li *ngFor="let course of courses">
+      <a [routerLink]="['./', course.id]">{{ course.name }}</a>
+    </li>
+  </ul>
+</app-nav-drawer-layout>
+
+
